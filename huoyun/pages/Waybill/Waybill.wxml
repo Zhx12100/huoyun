@@ -1,0 +1,202 @@
+<view class="inp-box">
+  <view class="input-box">
+    <view class="img-box">
+      <image src="/images/sousuo.png"></image>
+    </view>
+    <input type="text" bindconfirm="onConfirms" bindinput="bindSearch" placeholder="可输入单号、姓名、地址进行查询" placeholder-style="color:#B3B3B3"></input>
+  </view>
+</view>
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==='' ? 'on' : ''}}" data-current="" bindtap="swichNav">
+    全部
+  </view>
+  <view class="swiper-tab-list {{currentTab===0 ? 'on' : ''}}" data-current='0' bindtap="swichNav">
+    待付款
+  </view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current='1' bindtap="swichNav">
+    待运输
+  </view>
+  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current='2' bindtap="swichNav">
+    运输中
+  </view>
+  <view class="swiper-tab-list {{currentTab==5 ? 'on' : ''}}" data-current='5' bindtap="swichNav">
+    开发票
+  </view>
+</view>
+<view class="caozuo" wx:if="{{currentTab==5}}">
+  <view class="piliang" bindtap="showPiliang">
+    <view class="img-box">
+      <image src="/images/kaipiao.png"></image>
+    </view>
+    <view class="text">批量开票</view>
+  </view>
+  <view class="lishi" bindtap="goInvoce">
+    <view class="text">历史开票订单</view>
+    <view class="img-box">
+      <image src="/images/jiantou.png"></image>
+    </view>
+  </view>
+</view>
+<scroll-view scroll-y="true" class="swiper-box" bindscrolltolower="scrollHandler" 
+style="height:calc(100% - {{winHeight}}rpx)"
+bindrefresherrefresh="onRefresh" refresher-triggered="{{triggered}}" refresher-enabled="true"
+>
+  <view class="list" wx:if="{{currentTab!=5}}" wx:for="{{list}}" wx:key="value" wx:for-item="item" wx:for-index="index">
+    <view bindtap="goWayDetail" data-id="{{item.order_id}}">
+      <view class="tit">
+        <view class="no">运单号：{{item.order_no}}</view>
+        <view class="status">{{item.status}}</view>
+      </view>
+      <view class="address">
+        <view class="area start">
+          <view class="dizhi">{{item.origin_address}}</view>
+          <view class="name">{{item.origin_name}}</view>
+        </view>
+        <view class="jiant">
+          <image src="/images/dajiantou.png"></image>
+        </view>
+        <view class="area end">
+          <view class="dizhi">{{item.target_address}}</view>
+          <view class="name">{{item.target_name}}</view>
+        </view>
+      </view>
+      <view class="info">
+        <view class="lis">
+          <view class="img-box">
+            <image src="/images/luyun.png"></image>
+          </view>
+          <view class="text">{{item.transport_way}}</view>
+        </view>
+        <view class="lis">
+          <view class="img-box">
+            <image src="/images/huowu.png"></image>
+          </view>
+          <view class="text">{{item.freight_name}}</view>
+        </view>
+        <view class="lis">
+          <view class="img-box">
+            <image src="/images/zhongliang.png"></image>
+          </view>
+          <view class="text">{{item.volume}}KG</view>
+        </view>
+        <view class="lis">
+          <view class="img-box">
+            <image src="/images/tiji.png"></image>
+          </view>
+          <view class="text">{{item.volume}}方</view>
+        </view>
+      </view>
+      <view class="time">
+        <view class="img-box">
+          <image src="/images/shijian.png"></image>
+        </view>
+        <view class="text">下单时间：{{item.create_time}}</view>
+      </view>
+    </view>
+    <view class="but-box">
+      <button class="cacel" wx:if="{{item.status=='待付款'||item.status=='待运输'}}" bindtap="cancelOrder" data-id="{{item.order_id}}">
+        取消订单
+      </button>
+      <button class="confirm" wx:if="{{item.status=='待付款'}}">立即付款</button>
+      <button class="confirm" wx:if="{{item.status=='运输中'}}" bindtap="confirmOrder" data-id="{{item.order_id}}">
+        确认收货
+      </button>
+    </view>
+  </view>
+  <view class="kaipiao-box" wx:if="{{currentTab==5}}">
+    <view class="list" wx:for="{{list2}}" wx:key="value" wx:for-item="item" wx:for-index="index">
+      <view>
+        <view class="tit" bindtap="selectInvoce" data-index="{{index}}">
+          <view class="no">
+            <view class="select" wx:if="{{item.select==0&&piliangShow==true}}"></view>
+            <view class="select_active" wx:if="{{item.select==1&&piliangShow==true}}">
+              <image src="/images/yixuanze.png"></image>
+            </view>
+            <view class="text">运单号：{{item.order_no}}</view>
+          </view>
+          <view class="status">{{item.status}}</view>
+        </view>
+        <view bindtap="goWayDetail" data-id="{{item.order_id}}">
+          <view class="address">
+            <view class="area start">
+              <view class="dizhi">{{item.origin_address}}</view>
+              <view class="name">{{item.origin_name}}</view>
+            </view>
+            <view class="jiant">
+              <image src="/images/dajiantou.png"></image>
+            </view>
+            <view class="area end">
+              <view class="dizhi">{{item.target_address}}</view>
+              <view class="name">{{item.target_name}}</view>
+            </view>
+          </view>
+          <view class="info">
+            <view class="lis">
+              <view class="img-box">
+                <image src="/images/luyun.png"></image>
+              </view>
+              <view class="text">{{item.transport_way}}</view>
+            </view>
+            <view class="lis">
+              <view class="img-box">
+                <image src="/images/huowu.png"></image>
+              </view>
+              <view class="text">{{item.freight_name}}</view>
+            </view>
+            <view class="lis">
+              <view class="img-box">
+                <image src="/images/zhongliang.png"></image>
+              </view>
+              <view class="text">{{item.volume}}KG</view>
+            </view>
+            <view class="lis">
+              <view class="img-box">
+                <image src="/images/tiji.png"></image>
+              </view>
+              <view class="text">{{item.volume}}方</view>
+            </view>
+          </view>
+          <view class="time">
+            <view class="img-box">
+              <image src="/images/shijian.png"></image>
+            </view>
+            <view class="text">下单时间：{{item.create_time}}</view>
+          </view>
+        </view>
+        <view class="but-box">
+          <button class="confirm" wx:if="{{item.status=='待开票'}}" bindtap="goOpenInvoce" data-id="{{item.order_id}}">
+            开票
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{isHideLoadMore}}">
+    <image src="/images/loading.gif" class="weui-loading"></image>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{!isHideLoadMore}}">
+    <!-- <image src="/images/loading.gif" class="weui-loading"></image> -->
+    <view class="weui-loadmore__tips">暂无更多</view>
+  </view>
+  <!-- <view class="kong" wx:if="{{gujiaData.air.fee==''&&gujiaData.land.fee==''}}">
+    <image src="/images/kong.png" mode="widthFix"></image>
+    <view class="tips">
+      暂无该路线产品，请返回重新选择
+    </view>
+  </view> -->
+</scroll-view>
+<view class="add-address" wx:if="{{piliangShow==true&&currentTab==5}}">
+  <view class="text-box">
+    <view class="hetong-box" bindtap="allSelect">
+      <label class="checkbox">
+        <checkbox value="cb" />
+        全部选择
+      </label>
+    </view>
+    <view class="cacel" bindtap="cacelAllSelect">取消</view>
+  </view>
+  <view class="but-box" bindtap="goOpenInvoceAll" data-id="{{item.order_id}}">
+    <button>下一步</button>
+  </view>
+</view>

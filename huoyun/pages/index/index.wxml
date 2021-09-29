@@ -1,0 +1,113 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="banner">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{swiperArr}}" wx:for-item="item" wx:key="index">
+        <swiper-item bindtap="goWebview" data-name="{{item.banner_name}}" data-url="{{item.banner_url}}">
+          <image src="{{item.banner_pic}}" mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="info-box">
+    <view class="area-box">
+      <view class="start-area">
+        <picker 
+          mode="multiSelector" 
+          bindchange="bindMultiPickerChange" 
+          bindcolumnchange="bindMultiPickerColumnChange" 
+          data-type='0' 
+          value="{{regionStartIndex}}" 
+          range="{{regionStart}}">
+          <view class="picker">
+            <view class="ico">
+              <image src="/images/fajian.png"></image>
+            </view>
+            <view class="right">
+              <view class="area-text" wx:if="{{regionStart[0][regionStartIndex[0]]}}">
+                {{regionStart[0][regionStartIndex[0]]}}
+                {{regionStart[1][regionStartIndex[1]]}}
+                {{regionStart[2][regionStartIndex[2]]}}
+              </view>
+              <view wx:else class="tips">请选择发货区域</view>
+              <view class="guide">
+                <image src="/images/jiantou.png"></image>
+              </view>
+            </view>
+          </view>
+        </picker>
+      </view>
+      <view class="end-area">
+        <picker 
+          mode="multiSelector" 
+          bindchange="bindMultiPickerChange" 
+          bindcolumnchange="bindMultiPickerColumnChange" 
+          data-type='1' 
+          value="{{regionEndIndex}}" 
+          range="{{regionEnd}}">
+          <view class="picker">
+            <view class="ico">
+              <image src="/images/shoujian.png"></image>
+            </view>
+            <view class="right">
+              <view class="area-text" wx:if="{{regionEnd[0][regionEndIndex[0]]}}">
+                {{regionEnd[0][regionEndIndex[0]]}}
+                {{regionEnd[1][regionEndIndex[1]]}}
+                {{regionEnd[2][regionEndIndex[2]]}}
+              </view>
+              <view wx:else class="tips">请选择收货区域</view>
+              <view class="guide">
+                <image src="/images/jiantou.png"></image>
+              </view>
+            </view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="inp-box">
+      <view class="ico">
+        <view class="title">重量</view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          <input type="digit" class="inputs" bindinput="bindWeight" placeholder-style="color:#ccc;" placeholder="请输入公斤数" />
+        </view>
+        <view class="guide">
+          <view class="title">公斤</view>
+        </view>
+      </view>
+    </view>
+    <view class="inp-box">
+      <view class="ico">
+        <view class="title">体积</view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          <input type="digit" class="inputs" bindinput="bindVolume" placeholder-style="color:#ccc;" placeholder="请输入总方数" />
+        </view>
+        <view class="guide">
+          <view class="title">方</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="way-box">
+    <view class="title">送货方式</view>
+    <view class="way">
+      <radio-group bindchange="radioChange">
+        <label class="" wx:for="{{items}}" wx:key="value">
+          <view class="info">
+            <view class="name">{{item.name}}</view>
+            <view class="tips">{{item.tips}}</view>
+          </view>
+          <view class="select">
+            <radio color="#FFC53B" value="{{item.value}}" checked="{{item.value==true?true:false}}" />
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="button-box" bindtap="goTransportMode">
+    <button class="submit-but">估价下单</button>
+  </view>
+</view>

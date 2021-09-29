@@ -1,0 +1,192 @@
+page{
+  background: #F5F5F5;
+  height: 100%;
+}
+
+.add-address {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 16rpx 24rpx;
+  background: white;
+  box-sizing: border-box;
+}
+
+.add-address .but-box {}
+
+.add-address .but-box button {
+  width: 100%;
+  height: 88rpx;
+  background: #FFC53B;
+  border-radius: 44rpx;
+  font-size: 34rpx;
+  color: #333333;
+}
+
+
+.info-box{
+  background: white;
+  border-radius: 0rpx;
+  margin: 24rpx 24rpx 25rpx;
+  padding: 0 25rpx;
+  /* box-shadow: 0px 2rpx 10rpx 0rpx rgba(217, 215, 209, 0.5); */
+  z-index: 2;
+  position: relative;
+  border-radius: 20rpx;
+}
+.info-box .ico{
+  position: relative;
+  display: flex;
+}
+.info-box .ico .img-box{
+  width: 42rpx;
+  height: 42rpx;
+  object-fit: contain;
+  position: relative;
+  margin-right: 10rpx;
+}
+.info-box .ico .img-box image{
+  width: 100%;
+  height: 100%;
+}
+.info-box .ico .title{
+  font-size: 30rpx;
+  color: #333;
+}
+.info-box .area-box .start-area{
+  position: relative;
+}
+.info-box .area-box .start-area picker{
+  position: relative;
+  z-index: 9999;
+}
+.info-box .area-box .area-text{
+  font-size: 30rpx;
+  color: #333;
+}
+.info-box .tips{
+  font-size: 30rpx;
+  color: #ccc;
+}
+.info-box .inp-box .tips{
+  width: 100%;
+  text-align: right;
+}
+.info-box .guide{
+  width: 28rpx;
+  height: 28rpx;
+  font-size: 0;
+  flex-shrink: 0;
+}
+.info-box .guide image{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.info-box .guide .title{
+  font-size: 30rpx;
+  color: #333;
+}
+.info-box .ico{
+  width: 180rpx;
+  text-align: left;
+  font-size: 0;
+  flex-shrink: 0;
+}
+.info-box .area-box .start-area{
+  border-bottom: 1px solid #E6E6E6;
+}
+.info-box .area-box .picker{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.info-box .area-box .picker .right{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 116rpx;
+  padding-left: 45rpx;
+}
+.info-box .area-box .end-area .picker .right{
+  border-bottom: none;
+}
+.info-box .area-box .end-area{
+  border-bottom: 1px solid #E6E6E6;
+}
+.info-box .inp-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #E6E6E6;
+}
+.info-box .inp-box:last-child{
+    border-bottom: none;
+}
+.info-box .inp-box .right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 116rpx;
+  padding-left: 45rpx;
+}
+.info-box .inp-box .right .guide{
+  /* width: auto; */
+}
+.info-box .inp-box .right input{
+  width: 100%;
+  color: #333;
+  text-align: right;
+}
+
+.inp-box .radio-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.inp-box label{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 116rpx; */
+  /* border-bottom: 1px solid #E6E6E6; */
+}
+.inp-box label .name{
+  font-size: 30rpx;
+  color: #333;
+  display: inline-block;
+}
+.inp-box label .tips{
+  font-size: 26rpx;
+  color: #666;
+  display: inline-block;
+}
+
+.price-box{
+  background: white;
+  border-radius: 20rpx;
+  margin: 0rpx 24rpx 0rpx;
+  margin-top: 24rpx;
+  padding: 0rpx 25rpx 0;
+  /* box-shadow: 0px 2rpx 10rpx 0rpx rgba(217, 215, 209, 0.5); */
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120rpx;
+}
+.price-box .left{
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #333333;
+}
+.price-box .right{
+  font-size: 40rpx;
+  font-weight: 400;
+  color: #FF5E62;
+}

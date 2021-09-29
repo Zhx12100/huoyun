@@ -1,0 +1,18 @@
+<view class="setting1">
+    <view class="title">
+        发车提醒
+    </view>
+    <switch checked="{{send_flag}}" bindchange="switchSendFlag" />
+</view>
+<view class="setting1">
+    <view class="title">
+        司机更换提醒
+    </view>
+    <switch checked="{{driver_flag}}" bindchange="switchDriverFlag" />
+</view>
+<view class="setting1">
+    <view class="title">
+        订单状态通知
+    </view>
+    <switch checked="{{order_flag}}" bindchange="switchOrderFlag" />
+</view>

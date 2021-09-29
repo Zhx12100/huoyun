@@ -1,0 +1,147 @@
+
+<wxs module="filters" src="./filters.wxs"></wxs>
+<view class="title-box">
+  <view class="img-box">
+    <image wx:if="{{detail.status==0}}" src="/images/daifukuan.png"></image>
+    <image wx:if="{{detail.status==1}}" src="/images/daiyunshu.png"></image>
+    <image wx:if="{{detail.status==4}}" src="/images/yiquxiao.png"></image>
+    <image wx:if="{{detail.status==3}}" src="/images/yisongda.png"></image>
+    <image wx:if="{{detail.status==2}}" src="/images/yunshuzhong.png"></image>
+  </view>
+  <view class="info">
+    <view class="top">{{filters.getSwitchStatus(detail.status)}}</view>
+    <view class="bottom">{{filters.getSwitchStatusTips(detail.status)}}</view>
+  </view>
+</view>
+<view class="mode-box">
+  <view class="top">{{detail.transport_way}}</view>
+  <view class="bottom">
+    <view class="one">{{detail.delivery_flag?'送货上门':'自提'}}</view>
+    <view class="two">（不含卸货、上楼、进仓等服务。）</view>
+  </view>
+</view>
+<view class="info-box-top">
+  <view class="tit">
+    寄件信息
+  </view>
+  <view class="area-box">
+    <view class="start-area">
+      <view class="picker">
+        <view class="ico">
+          <image src="/images/fajian.png"></image>
+        </view>
+        <view class="right">
+          <view class="person" data-type="1">
+            <view class="title">
+              {{detail.origin_address.name}} {{detail.origin_address.phone}}
+            </view>
+            <view class="info">
+              {{detail.origin_address.address}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="end-area">
+      <view class="picker">
+        <view class="ico">
+          <image src="/images/shoujian.png"></image>
+        </view>
+        <view class="right">
+          <view class="person" data-type="1">
+            <view class="title">
+              {{detail.target_address.name}} {{detail.target_address.phone}}
+            </view>
+            <view class="info">
+              {{detail.target_address.address}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="info-box">
+  <view class="tit">
+    货物信息
+  </view>
+  <view class="cont">
+    <view class="lis">
+      <view class="name">货物名称:</view>
+      <view class="tex">{{detail.freight_name}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">包装方式:</view>
+      <view class="tex">{{detail.freight_wrap}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">总重量:</view>
+      <view class="tex">{{detail.weight}}公斤</view>
+    </view>
+    <view class="lis">
+      <view class="name">总体积:</view>
+      <view class="tex">{{detail.volume}}方</view>
+    </view>
+  </view>
+</view>
+<view class="price-box">
+  <view class="left">总金额</view>
+  <view class="right">￥{{detail.order_fee}}</view>
+</view>
+<view class="info-box">
+  <view class="tit">
+    订单信息
+  </view>
+  <view class="cont">
+    <view class="lis">
+      <view class="name">订单编号:</view>
+      <view class="tex">{{detail.order_no}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">创建时间:</view>
+      <view class="tex">{{detail.create_time}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">支付方式:</view>
+      <view class="tex">现付</view>
+    </view>
+  </view>
+</view>
+<view class="info-box" wx:if="{{detail.status==2}}">
+  <view class="tit">
+    送货跟踪
+  </view>
+  <view class="cont">
+    <view class="lis">
+      <view class="name">负责司机:</view>
+      <view class="tex">{{detail.driver_info.name}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">联系电话:</view>
+      <view class="tex">{{detail.driver_info.phone}}</view>
+    </view>
+    <view class="lis">
+      <view class="name">车辆号码:</view>
+      <view class="tex">{{detail.driver_info.plate}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="add-address">
+  <view class="text-box">
+    <view class="top">
+      <view class="title">
+        总金额
+      </view>
+      <view class="price">
+        ￥{{detail.order_fee}}
+      </view>
+    </view>
+  </view>
+  <view class="but-box">
+    <button class="cacel" wx:if="{{detail.status==0||detail.status==1}}" bindtap="cancelOrder">取消订单</button>
+    <button class="confirm" wx:if="{{detail.status==0}}" bindtap="payment">立即付款</button>
+    <button class="confirm" wx:if="{{detail.status==2}}" bindtap="confirmOrder">确认收货</button>
+    <button class="confirm" wx:if="{{detail.status==5}}" bindtap="goOpenInvoce">开票</button>
+  </view>
+</view>

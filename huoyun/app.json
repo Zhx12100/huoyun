@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/status/status",
+    "pages/login/index",
+    "pages/index/index",
+    "pages/webviewBox/webviewBox",
+    "pages/Waybill/Waybill",
+    "pages/setting/setting",
+    "pages/my/my",
+    "pages/openInvoce/openInvoce",
+    "pages/invoce/invoce",
+    "pages/WayDetail/WayDetail",
+    "pages/placeOrder/placeOrder",
+    "pages/addEditAddress/addEditAddress",
+    "pages/addressManage/addressManage",
+    "pages/transportMode/transportMode",  
+    "pages/logs/logs"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FFC53B",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/fahuo_active.png",
+        "iconPath": "images/fahuo.png",
+        "pagePath": "pages/index/index",
+        "text": "发货"
+      },
+      {
+        "selectedIconPath": "images/yundan_active.png",
+        "iconPath": "images/yundan.png",
+        "pagePath": "pages/Waybill/Waybill",
+        "text": "运单"
+      },
+      {
+        "selectedIconPath": "images/wode_active.png",
+        "iconPath": "images/wode.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}

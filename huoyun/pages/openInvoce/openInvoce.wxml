@@ -1,0 +1,90 @@
+<view class="info-box">
+  <view class="inp-box">
+    <view class="ico">
+      <view class="title">
+        抬头类型
+      </view>
+    </view>
+    <view class="right">
+      <view class="tips">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="" wx:for="{{items}}" wx:key="value">
+            <view class="select">
+              <radio color="#FFC53B" value="{{item.value}}" checked="{{item.value==0?true:false}}" />
+            </view>
+            <view class="info">
+              <view class="name">{{item.name}}</view>
+            </view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="inp-box">
+    <view class="ico">
+      <view class="title">
+        公司名称
+      </view>
+    </view>
+    <view class="right">
+      <view class="tips">
+        <input type="text" class="inputs" placeholder-style="color:#ccc;" placeholder="请填写需要开具发票的企业名称" bindinput="bindCompanyName" />
+      </view>
+    </view>
+  </view>
+  <view class="inp-box" wx:if="{{invoice_head==0}}">
+    <view class="ico">
+      <view class="title">
+        公司税务号
+      </view>
+    </view>
+    <view class="right">
+      <view class="tips">
+        <input type="text" class="inputs" placeholder-style="color:#ccc;" placeholder="请填写公司税务号" bindinput="bindCompanyEin"/>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="price-box">
+  <view class="left">总金额</view>
+  <view class="right">￥{{orderPrice}}</view>
+</view>
+
+<view class="info-box">
+  <view class="inp-box">
+    <view class="ico">
+      <!-- <view class="img-box">
+        <image src="/images/youxiang.png"></image>
+      </view> -->
+      <view class="title">
+        电子邮箱
+      </view>
+    </view>
+    <view class="right">
+      <view class="tips">
+        <input type="email" class="inputs" placeholder-style="color:#ccc;" placeholder="请填写电子邮箱" bindinput="bindAcceptEmail"/>
+      </view>
+    </view>
+  </view>
+  <view class="inp-box">
+    <view class="ico">
+      <!-- <view class="img-box">
+        <image src="/images/weixin.png"></image>
+      </view> -->
+      <view class="title">
+        手机号码
+      </view>
+    </view>
+    <view class="right">
+      <view class="tips">
+        <input type="digit" class="inputs" placeholder-style="color:#ccc;" placeholder="请填写手机号码" bindinput="bindAcceptPhone"/>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="add-address">
+  <view class="but-box" bindtap="goAddEditAddress" data-type="0">
+    <button>提交</button>
+  </view>
+</view>

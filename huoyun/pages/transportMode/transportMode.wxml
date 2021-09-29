@@ -1,0 +1,96 @@
+<view class="container">
+  <view class="mode-box">
+    <view class="list" wx:if="{{gujiaData.land.fee!=''}}">
+      <view class="top-info">
+        <view class="left">
+          <view class="img-box">
+            <image src="/images/lunyun.png"></image>
+          </view>
+          <view class="title">
+            陆运
+          </view>
+        </view>
+        <view class="price-box">
+          <view class="symbol">
+            ￥
+          </view>
+          <view class="price">
+            {{gujiaData.land.fee}}
+          </view>
+        </view>
+      </view>
+      <view class="remark">{{gujiaData.land.remind}}</view>
+      <view class="order-box">
+        <view bindtap="showDetail" data-type="land">产品详情 ></view>
+        <button bindtap="goPlaceOrder" data-gettype="land" data-fee="{{gujiaData.land.fee}}" data-index="{{gujiaData.land.index}}">下单</button>
+      </view>
+    </view>
+    <view class="list" wx:if="{{gujiaData.air.fee!=''}}">
+      <view class="top-info">
+        <view class="left">
+          <view class="img-box">
+            <image src="/images/kongyun.png"></image>
+          </view>
+          <view class="title">
+            空运
+          </view>
+        </view>
+        <view class="price-box">
+          <view class="symbol">
+            ￥
+          </view>
+          <view class="price">
+            {{gujiaData.air.fee}}
+          </view>
+        </view>
+      </view>
+      <view class="remark">{{gujiaData.air.remind}}</view>
+      <view class="order-box">
+        <view bindtap="showDetail"  data-type="air">产品详情 ></view>
+        <button bindtap="goPlaceOrder" data-gettype="air" data-fee="{{gujiaData.air.fee}}" data-index="{{gujiaData.air.index}}">下单</button>
+      </view>
+    </view>
+    <view class="kong" wx:if="{{gujiaData.air.fee==''&&gujiaData.land.fee==''}}">
+      <image src="/images/kong.png" mode="widthFix"></image>
+      <view class="tips">
+        暂无该路线产品，请返回重新选择
+      </view>
+    </view>
+  </view>
+  <view class="model" style="top:{{detailTop}}%">
+    <view class="content">
+      <view class="img-box" bindtap="hideDetail">
+        <image src="/images/guanbi.png"></image>
+      </view>
+      <view class="title">
+        {{detailTitle}}
+      </view>
+      <view class="cont">
+        <view class="list">
+          {{detailContent}}
+        </view>
+        <!-- <view class="list">
+          <view class="top">【运输对象】</view>
+          <view class="bottom">300公斤以上的紧急订单</view>
+        </view>
+        <view class="list">
+          <view class="top">【产品特点】</view>
+          <view class="bottom">
+            1.高效便捷：快捷收件、直飞航班<br />
+            2.专业稳定：阳光清关、时效稳定<br />
+            3.专业入户：提供送货上楼/选时派送/送装一体/拆包点亮/退换货等个性化需求
+          </view>
+        </view>
+        <view class="list">
+          <view class="top">【禁运物品说明】</view>
+          <view class="bottom">
+            禁运物品是指威胁航空飞行安全的物品,指在航空运中,可能明显地危害人身健康.安全或对财产造成损害物品或物质。
+          </view>
+        </view> -->
+      </view>
+      <view class="but-box"  bindtap="hideDetail">
+        <button>关闭</button>
+      </view>
+    </view>
+  </view>
+</view>

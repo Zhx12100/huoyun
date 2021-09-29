@@ -1,0 +1,61 @@
+<view class="list" wx:if="{{currentTab!=5}}" wx:for="{{list}}" wx:key="value" wx:for-item="item" wx:for-index="index">
+  <view bindtap="goWayDetail" data-id="{{item.order_id}}">
+    <view class="tit">
+      <view class="no">运单号：{{item.order_no}}</view>
+      <view class="status">{{item.status}}</view>
+    </view>
+    <view class="address">
+      <view class="area start">
+        <view class="dizhi">{{item.origin_address}}</view>
+        <view class="name">{{item.origin_name}}</view>
+      </view>
+      <view class="jiant">
+        <image src="/images/dajiantou.png"></image>
+      </view>
+      <view class="area end">
+        <view class="dizhi">{{item.target_address}}</view>
+        <view class="name">{{item.target_name}}</view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="lis">
+        <view class="img-box">
+          <image src="/images/luyun.png"></image>
+        </view>
+        <view class="text">{{item.transport_way}}</view>
+      </view>
+      <view class="lis">
+        <view class="img-box">
+          <image src="/images/huowu.png"></image>
+        </view>
+        <view class="text">{{item.freight_name}}</view>
+      </view>
+      <view class="lis">
+        <view class="img-box">
+          <image src="/images/zhongliang.png"></image>
+        </view>
+        <view class="text">{{item.volume}}KG</view>
+      </view>
+      <view class="lis">
+        <view class="img-box">
+          <image src="/images/tiji.png"></image>
+        </view>
+        <view class="text">{{item.volume}}方</view>
+      </view>
+    </view>
+    <view class="time">
+      <view class="img-box">
+        <image src="/images/shijian.png"></image>
+      </view>
+      <view class="text">下单时间：{{item.create_time}}</view>
+    </view>
+  </view>
+</view>
+<view class="weui-loadmore" wx:if="{{isHideLoadMore}}">
+  <image src="/images/loading.gif" class="weui-loading"></image>
+  <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore" wx:if="{{!isHideLoadMore}}">
+  <!-- <image src="/images/loading.gif" class="weui-loading"></image> -->
+  <view class="weui-loadmore__tips">暂无更多</view>
+</view>

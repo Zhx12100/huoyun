@@ -1,0 +1,205 @@
+/* pages/transportMode/transportMode.wxss */
+
+page {
+  background: #F5F5F5;
+  height: 100%;
+}
+
+.mode-box {
+  margin: 0 24rpx 0;
+}
+
+.mode-box .list {
+  background: white;
+  padding: 25rpx 30rpx;
+  border-radius: 14rpx;
+  margin-top: 25rpx;
+}
+
+.mode-box .list .top-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mode-box .list .top-info .left {
+  display: flex;
+  align-items: flex-end;
+}
+
+.mode-box .list .top-info .left .img-box {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 15rpx;
+}
+
+.mode-box .list .top-info .left .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.mode-box .list .top-info .img-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.mode-box .list .top-info .price-box {
+  color: #FF5E62;
+}
+
+.mode-box .list .top-info .price-box .symbol {
+  font-size: 24rpx;
+}
+
+.mode-box .list .top-info .price-box .price {
+  font-size: 46rpx;
+  font-weight: bold;
+}
+
+.mode-box .list .top-info .price-box view {
+  display: inline-block;
+}
+
+.mode-box .list .remark {
+  font-size: 28rpx;
+  color: #999999;
+  margin: 15rpx 0;
+}
+
+.mode-box .list .order-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mode-box .list .order-box>view {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+}
+
+.mode-box .list .order-box>button {
+  background: #FFC53B;
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #333333;
+  text-align: center;
+  margin: -30rpx 0 0;
+  padding: 0;
+}
+
+.mode-box .kong {
+  margin-top: 200rpx;
+  text-align: center;
+}
+
+.mode-box .kong image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.mode-box .kong .tips {
+  color: #666;
+  font-size: 26rpx;
+}
+
+.mode-box .kong .tips button {
+  width: 100% !important;
+  height: 88rpx;
+  background: #FFC53B;
+  border-radius: 50px;
+  font-size: 34rpx;
+  color: #333;
+}
+
+
+.model {
+  position: fixed;
+  /* top: -100%; */
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto auto;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  transition: .5s;
+}
+
+.model .content {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 0 45rpx 0;
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+}
+
+.model .content .img-box {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 15rpx;
+}
+
+.model .content .img-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.model .content .title {
+  font-size: 32rpx;
+  color: #333333;
+  text-align: center;
+  font-weight: bold;
+}
+
+.model .content .cont {
+  margin: 40rpx 40rpx 0;
+  height: 84%;
+  overflow-y: scroll;
+}
+
+.model .content .cont .list {
+  margin-bottom: 40rpx;
+}
+
+.model .content .cont .list .top {
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.model .content .cont .list .bottom {
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.model .content .but-box {
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.model .content .but-box button {
+  width: 100%;
+  height: 88rpx;
+  background: #FFC53B;
+  border-radius: 44rpx;
+  font-size: 34rpx;
+  color: #333333;
+}

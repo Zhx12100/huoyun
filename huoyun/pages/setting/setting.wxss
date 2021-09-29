@@ -1,0 +1,19 @@
+page{
+    background: #F5F5F5;
+}
+.setting1 {
+    margin: 24rpx 24rpx 0;
+    background: #FFFFFF;
+    border-radius: 20rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:  0 30rpx;
+}
+
+.setting1 .title {
+    font-size: 32rpx;
+    font-weight: 400;
+    color: #333333;
+}

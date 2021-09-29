@@ -1,0 +1,246 @@
+<!--pages/placeOrder/placeOrder.wxml-->
+<view class="container"
+  style="background:url('/images/back.png') no-repeat;background-size: contain;background-position: 0 0 ;">
+  <view class="info-box-top">
+    <view class="area-box">
+      <view class="start-area">
+        <view class="picker">
+          <view class="ico">
+            <image src="/images/fajian.png"></image>
+          </view>
+          <view class="right">
+            <view class="text">{{regionStarts}}</view>
+            <view class="tips">
+              发货区域: {{orderInfo.origin_address.province}} /
+              {{orderInfo.origin_address.city}} /
+              {{orderInfo.origin_address.region}}
+            </view>
+          </view>
+        </view>
+        <view class="person-info">
+          <view class="person">
+            <view wx:if="{{startAddress.name==''}}">
+              <view class="title">
+                寄件人信息{{startAddress.name}}
+              </view>
+              <view class="info">
+                点击填写寄件人信息
+              </view>
+            </view>
+            <view class="info" wx:if="{{startAddress.name!=''}}">
+              <view class="top">
+                {{startAddress.name}} {{startAddress.phone}}
+              </view>
+              <view class="bottom">
+                {{startAddress.region}}{{startAddress.address}}
+              </view>
+            </view>
+          </view>
+          <view class="address" bindtap="goAddressManage" data-type="start" data-origin="0">
+            地址簿
+          </view>
+        </view>
+      </view>
+      <view class="end-area">
+        <view class="picker">
+          <view class="ico">
+            <image src="/images/shoujian.png"></image>
+          </view>
+          <view class="right">
+            <view class="tips">
+              收货区域: {{orderInfo.target_address.province}} /
+              {{orderInfo.target_address.city}} /
+              {{orderInfo.target_address.region}}
+            </view>
+          </view>
+        </view>
+        <view class="person-info">
+          <view class="person">
+            <view wx:if="{{endAddress.name==''}}">
+              <view class="title">
+                寄件人信息
+              </view>
+              <view class="info">
+                点击填写收件人信息
+              </view>
+            </view>
+            <view class="info" wx:if="{{endAddress.name!=''}}">
+              <view class="top">
+                {{endAddress.name}} {{endAddress.phone}}
+              </view>
+              <view class="bottom">
+                {{endAddress.region}}{{endAddress.address}}
+              </view>
+            </view>
+          </view>
+          <view class="address" wx:if="{{orderInfo.delivery_flag==true}}" bindtap="goAddressManage" data-type="end" data-origin="0">
+            地址簿
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="info-box-middle">
+    <view class="tit">
+      <view class="img-box">
+        <image wx:if="{{gettype=='空运'}}" src="/images/kongyun.png"></image>
+        <image wx:else src="/images/lunyun.png"></image>
+      </view>
+      <view class="text">
+        {{gettype}}
+      </view>
+    </view>
+    <view class="cont">
+      <view class="inp-box">
+        <view class="ico">
+          <view class="title">
+            货物名称
+          </view>
+        </view>
+        <view class="right">
+          <view class="tips">
+            <input type="text" class="inputs" bindinput="bindName" placeholder-style="color:#ccc;"
+              placeholder="请输入货物名称" />
+          </view>
+        </view>
+      </view>
+      <view class="area-box">
+        <view class="start-area">
+          <picker bindchange="bindPickerChangeFs" mode="selector" value="{{index}}" range-key='name' range="{{freightWrapArr}}">
+            <view class="picker">
+              <view class="ico">
+                <view class="title">
+                  包装方式
+                </view>
+              </view>
+              <view class="right">
+                <view class="area-text" wx:if="{{orderInfo.freight_wrap!=''||orderInfo.freight_wrap===0}}">
+                  {{switchFreight}}
+                </view>
+                <view wx:if="{{orderInfo.freight_wrap==''&&orderInfo.freight_wrap!==0}}" class="tips">
+                  请选择包装方式
+                </view>
+                <view class="guide">
+                  <image src="/images/jiantou.png"></image>
+                </view>
+              </view>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="inp-box">
+        <view class="ico">
+          <view class="title">
+            总重量
+          </view>
+        </view>
+        <view class="right">
+          <view class="tips">
+            <input type="digit" class="inputs" bindinput="bindWeight" value="{{orderInfo.weight}}" placeholder-style="color:#ccc;"
+              placeholder="请输入公斤数" />
+          </view>
+          <view class="guide">公斤</view>
+        </view>
+      </view>
+      <view class="inp-box">
+        <view class="ico">
+          <view class="title">
+            总体积
+          </view>
+        </view>
+        <view class="right">
+          <view class="tips">
+            <input type="digit" class="inputs" bindinput="bindVolume" value="{{orderInfo.volume}}" placeholder-style="color:#ccc;"
+              placeholder="请输入总方数" />
+          </view>
+          <view class="guide">方</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="way-box">
+    <view class="tit">
+      <view class="img-box">
+        <image src="/images/zhifu.png"></image>
+      </view>
+      <view class="text">
+        支付方式
+      </view>
+    </view>
+    <view class="way">
+      <radio-group bindchange="radioChange">
+        <label class="" wx:for="{{items}}" wx:key="value">
+          <view class="info">
+            <view class="name">{{item.name}}</view>
+            <view class="tips">{{item.tips}}</view>
+          </view>
+          <view class="select">
+            <radio color="#FFC53B" value="{{item.value}}" checked="{{item.value==0?true:false}}" />
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class="remark-box">
+    <view class="tit">
+      <view class="left">
+        <view>备注</view>
+        <view class="text">（非必填）</view>
+      </view>
+      <view class="right">{{orderInfo.note.length}}/100字</view>
+    </view>
+    <view class="cont">
+      <textarea type="text" rows="1" maxlength="100" cols="1" bindinput="bindNote" value="{{orderInfo.note}}" placeholder="请填写备注内容" placeholder-style="color:#ccc;" />
+    </view>
+  </view>
+
+  <view class="hetong-box">
+    <checkbox-group class="checkbox" bindchange="listenCheckboxContractChange">
+      <checkbox value="cb" />我已阅读并同意
+    </checkbox-group>
+    <view class="tongyi" bindtap="showDetail">《运输服务合同》</view>
+  </view>
+
+  <view class="model" style="top:{{detailTop}}%">
+    <view class="content">
+      <view class="img-box" bindtap="hideDetail">
+        <image src="/images/guanbi.png"></image>
+      </view>
+      <view class="title">
+        运输服务合同
+      </view>
+      <view class="cont">
+        <view class="list">
+          <view class="bottom">
+            <rich-text nodes="{{contract}}"></rich-text>
+          </view>
+        </view>
+      </view>
+      <view class="but-box" bindtap="hideDetail">
+        <button>同意</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-address">
+    <view class="text-box">
+      <view class="top">
+        <view class="title">
+          预估运费
+        </view>
+        <view class="price">
+          ￥{{orderInfo.order_fee}}
+        </view>
+      </view>
+      <view class="bottom">
+        实际以现场计量为准
+      </view>
+    </view>
+    <view class="but-box"  bindtap="submitOrder">
+      <button>立即下单</button>
+    </view>
+  </view>
+</view>

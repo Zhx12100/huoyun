@@ -1,0 +1,42 @@
+{
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "下单页面",
+                    "pathName": "pages/placeOrder/placeOrder",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "首页",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "下单价格展示",
+                    "pathName": "pages/transportMode/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "订单详情",
+                    "pathName": "pages/WayDetail/WayDetail",
+                    "query": "order_id=53",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

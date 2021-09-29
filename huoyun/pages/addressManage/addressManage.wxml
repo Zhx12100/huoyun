@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="input-box" wx:if="{{!area}}">
+    <view class="img-box">
+      <image src="/images/sousuo.png"></image>
+    </view>
+    <input type="text" bindconfirm="onConfirms" placeholder="输入关键词快速查找地址" bindinput="bindSearch" placeholder-style="color:#B3B3B3"></input>
+  </view>
+  <!-- 地址列表 -->
+  <scroll-view scroll-y="true" class="content" bindscrolltolower="scrollHandler">
+    <view class="list" wx:for="{{list}}" wx:key="value" wx:for-item="item" wx:for-index="index">
+      <view class="top" bindtap="goBack" data-index="{{index}}">
+        <view class="name-tel">
+          <view class="name">{{item.name}}</view>
+          <view class="tel">{{item.phone}}</view>
+        </view>
+        <view class="address">{{item.region}}{{item.address}}</view>
+      </view>
+      <view class="bottom">
+        <view class="bianji spa" bindtap="goAddEditAddress" data-id="{{item.address_id}}" data-editadd="edit">
+          <image src="/images/bianji.png"></image>
+          <view>编辑</view>
+        </view>
+        <view class="bianji spa" bindtap="deleteAddress" data-id="{{item.address_id}}">
+          <image src="/images/del.png"></image>
+          <view>删除</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-loadmore" wx:if="{{isHideLoadMore}}">
+      <image src="/images/loading.gif" class="weui-loading"></image>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore" wx:if="{{!isHideLoadMore}}">
+      <!-- <image src="/images/loading.gif" class="weui-loading"></image> -->
+      <view class="weui-loadmore__tips">暂无更多</view>
+    </view>
+  </scroll-view>
+  <!-- 暂无收货地址 -->
+  <view class="no-manage hidden">
+    <view class="box">
+      <view class="img-box">
+        <image src="/images/noManage.png"></image>
+      </view>
+      <view class="tips">暂无收货地址~</view>
+    </view>
+  </view>
+  <view class="add-address">
+    <view class="but-box" bindtap="goAddEditAddress" data-editadd="add" data-id="">
+      <button>新增地址</button>
+    </view>
+  </view>
+</view>

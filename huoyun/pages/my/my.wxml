@@ -1,0 +1,83 @@
+<view class="banner-box">
+  <image src="/images/back2.png" mode="widthFix"></image>
+</view>
+<view class="fu-margin">
+  <view class="title-box">
+    <view class="img-box">
+      <!-- <image src="/images/daifukuan.png"></image> -->
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="info">
+      <view class="top">
+        <open-data type="userNickName"></open-data>
+      </view>
+      <view class="bottom">{{detail.phone}}</view>
+    </view>
+  </view>
+  <view class="ban"></view>
+  <view class="info-box">
+    <view class="inp-box" bindtap="goAddressManage"  data-type="end" data-origin="1">
+      <view class="ico">
+        <view class="img-box">
+          <image src="/images/dizhi.png"></image>
+        </view>
+        <view class="title">
+          收货地址管理
+        </view>
+      </view>
+      <view class="right">
+        <view class="guide">
+          <image src="/images/jiantou.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="inp-box" bindtap="goAddressManage" data-type="start" data-origin="1">
+      <view class="ico">
+        <view class="img-box">
+          <image src="/images/dizhi.png"></image>
+        </view>
+        <view class="title">
+          发货仓库管理
+        </view>
+      </view>
+      <view class="right">
+        <view class="guide">
+          <image src="/images/jiantou.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="inp-box" bindtap='call'>
+      <view class="ico">
+        <view class="img-box">
+          <image src="/images/kefu.png"></image>
+        </view>
+        <view class="title">
+          电话客服
+        </view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          {{detail.service_phone}}
+        </view>
+        <view class="guide">
+          <image src="/images/jiantou.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="inp-box"  bindtap="goSetting">
+      <view class="ico">
+        <view class="img-box">
+          <image src="/images/shezhi.png"></image>
+        </view>
+        <view class="title">
+          系统设置
+        </view>
+      </view>
+      <view class="right">
+        <view class="guide">
+          <image src="/images/jiantou.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

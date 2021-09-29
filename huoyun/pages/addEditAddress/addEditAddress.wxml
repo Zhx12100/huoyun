@@ -1,0 +1,75 @@
+<view class="container">
+  <view class="info-box">
+    <view class="inp-box">
+      <view class="ico">
+        <view class="title">
+          联系人
+        </view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          <input type="text" class="inputs" value="{{formData.name}}" bindinput="bindName" placeholder-style="color:#ccc;" placeholder="联系人" />
+        </view>
+      </view>
+    </view>
+    <view class="inp-box">
+      <view class="ico">
+        <view class="title">
+          手机号码
+        </view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          <input type="number" class="inputs" value="{{formData.phone}}" bindinput="bindMobile" placeholder-style="color:#ccc;" placeholder="手机号码" />
+        </view>
+      </view>
+    </view>
+    <view class="area-box">
+      <view class="start-area">
+        <picker 
+          mode="multiSelector" 
+          bindchange="bindMultiPickerChange" 
+          bindcolumnchange="bindMultiPickerColumnChange"
+          value="{{regionIndex}}" 
+          range="{{region}}">
+          <view class="picker">
+            <view class="ico">
+              <view class="title">
+                省市区
+              </view>
+            </view>
+            <view class="right">
+              <view class="area-text" wx:if="{{region[0][regionIndex[0]]}}">
+                {{region[0][regionIndex[0]]}}
+                {{region[1][regionIndex[1]]}}
+                {{region[2][regionIndex[2]]}}
+              </view>
+              <view wx:else class="tips">请选择省市区</view>
+              <view class="guide">
+                <image src="/images/jiantou.png"></image>
+              </view>
+            </view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="inp-box">
+      <view class="ico">
+        <view class="title">
+          详细地址
+        </view>
+      </view>
+      <view class="right">
+        <view class="tips">
+          <input type="text" value="{{formData.address}}" class="inputs" bindinput="bindDetail" placeholder-style="color:#ccc;" placeholder="如：5号楼208室" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-address">
+    <view class="but-box"  bindtap="goBack">
+      <button>保存</button>
+    </view>
+  </view>
+</view>
