@@ -49,10 +49,30 @@ Page({
         this.setData({
           flag: false
         })
-        wx.showToast({
-          title: '请授权允许获得您的手机号码',
-          icon: 'none',
-          duration: 1500
+        // wx.showToast({
+        //   title: '请授权允许获得您的手机号码',
+        //   icon: 'none',
+        //   duration: 1500
+        // })
+        that.setData({
+          'storageInfo.userInfo':that.data.userInfo
+        })
+        // return false
+        wx.request({
+          url: app.globalData.baseUrl + '/applet/user/save_info',
+          method: "post",
+          data: that.data.storageInfo.userInfo,
+          success: function (ress) {
+            console.log('登陆',ress)
+            that.setData({
+              'storageInfo.token':ress.data.data.token
+            })
+            wx.setStorageSync('userInfo',that.data.storageInfo)
+            app.globalData.token = ress.data.data.token
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
         })
       },
       fail: function (err) {
@@ -78,26 +98,7 @@ Page({
         that.setData({
           'userInfo.phone':res.data.data.phoneNumber
         })
-        that.setData({
-          'storageInfo.userInfo':that.data.userInfo
-        })
-        // return false
-        wx.request({
-          url: app.globalData.baseUrl + '/applet/user/save_info',
-          method: "post",
-          data: that.data.storageInfo.userInfo,
-          success: function (ress) {
-            console.log('登陆',ress)
-            that.setData({
-              'storageInfo.token':ress.data.data.token
-            })
-            wx.setStorageSync('userInfo',that.data.storageInfo)
-            app.globalData.token = ress.data.data.token
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }
-        })
+        
       }
     })
   }

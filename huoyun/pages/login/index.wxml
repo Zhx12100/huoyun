@@ -10,7 +10,7 @@
     <view class="">
       <button class="{{flag?'show':'hide'}}" type="primary" 
         bindtap="getInfo">{{AuthorizedLogin}}</button>
-      <button class="{{flag?'hide':'show'}}" type="primary" 
+      <button class="'hide'" type="primary" 
       bindgetphonenumber="getNumber" open-type="getPhoneNumber">{{UserPhone}}</button>
     </view>
   </view>
